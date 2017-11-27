@@ -66,7 +66,7 @@ public class DesuChatClient {
      */
     private void send() {
         Scanner s = new Scanner(System.in);
-        while (this.socket.isConnected()) {
+        while (true) {
             try {
                 this.ops.writeObject(s.nextLine());
                 this.ops.flush();
@@ -74,6 +74,5 @@ public class DesuChatClient {
                 Logger.getLogger(DesuChat.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.exit(0);
     }
 }

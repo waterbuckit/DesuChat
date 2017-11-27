@@ -31,13 +31,15 @@ public class Connect implements Runnable {
     }
 
     private void chat() {
+        String message = "";
         do {
             try {
+                message = (String) this.ois.readObject();
                 System.out.println("[" + this.socket.getInetAddress().getHostName()
-                        + "] " + (String) this.ois.readObject());
+                        + "] " + message);
             } catch (Exception e) {
             }
-        } while (this.socket.isConnected());
+        } while (!message.equals("END"));
         try {
             socket.close();
             ois.close();
